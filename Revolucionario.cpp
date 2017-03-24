@@ -1,23 +1,19 @@
-#include "Marina.h"
+#include "Revolucionario.h"
 
-Marina::Marina(){
 
-}
 
-Marina::Marina(string raza, int edad, string nombre, bool hakiO, bool hakiA, bool hakiR, string fecha)
-: Seres(raza, edad, nombre, hakiO, hakiA, hakiR){
+Revolucionario::Revolucionario(string raza, int edad, string nombre, bool hakiO, bool hakiA, bool hakiR, string fecha) : Seres(raza, edad, nombre, hakiO, hakiA, hakiR){
   this -> fecha = fecha;
-  this -> rango = rango;
 }
 
-string Marina::getFecha(){
+string Revolucionario::getFecha(){
   return fecha;
 }
 
-string Marina::getRango(){
-  return rango;
+Revolucionario::~Revolucionario(){
+
 }
 
-Marina::~Marina(){
-
+void Revolucionario::setFruta(FrutaDD fruit){
+  fruta = fruit;
 }

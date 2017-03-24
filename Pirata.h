@@ -1,6 +1,7 @@
 #pragma once
 #include "Seres.h"
 
+using namespace std;
 class Pirata : public Seres{
 private:
   string oceano;
@@ -8,12 +9,13 @@ private:
   string funcion;
 
 public:
-  Pirata();
-  Pirata(string, int, string, FrutaDD, bool, bool, bool, string, string);
+  Pirata(string, int, string, bool, bool, bool, string, string, string);
 
   string getOceano();
   string getTripulacion();
   string getFuncion();
+
+  void setFruta(FrutaDD);
 
   virtual ~Pirata();
 };

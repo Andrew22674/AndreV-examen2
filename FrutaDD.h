@@ -2,6 +2,8 @@
 
 #include <string>
 
+using namespace std;
+
 class FrutaDD{
 private:
   string nombre;

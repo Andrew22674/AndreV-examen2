@@ -8,7 +8,7 @@ Logia::Logia(string nombre, string elemento) : FrutaDD(nombre){
   this -> elemento = elemento;
 }
 
-Logia::getElemento(){
+string Logia::getElemento(){
   return elemento;
 }
 

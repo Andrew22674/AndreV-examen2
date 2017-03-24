@@ -41,10 +41,6 @@ bool Seres::getHakiR(){
   return hakiR;
 }
 
-void Seres::setFruta(FrutaDD fruit){
-  fruta = fruit;
-}
-
 Seres::~Seres(){
 
 }

@@ -8,7 +8,7 @@ Paramecia::Paramecia(string nombre, string descripcion) : FrutaDD(nombre){
   this -> descripcion = descripcion;
 }
 
-Paramecia::getDescripcion(){
+string Paramecia::getDescripcion(){
   return descripcion;
 }
 

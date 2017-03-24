@@ -9,11 +9,11 @@ Zoan::Zoan(string nombre, string tipo, string animal) : FrutaDD(nombre){
   this -> animal = animal;
 }
 
-Zoan::getTipo(){
+string Zoan::getTipo(){
   return tipo;
 }
 
-Zoan::getAnimal(){
+string Zoan::getAnimal(){
   return animal;
 }
 

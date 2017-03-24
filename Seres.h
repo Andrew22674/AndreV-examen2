@@ -2,7 +2,7 @@
 
 #include <string>
 #include <iostream>
-#include "FrutaDD.h";
+#include "FrutaDD.h"
 
 using namespace std;
 
@@ -11,11 +11,12 @@ private:
   string raza;
   int edad;
   string nombre;
-  FrutaDD fruta;
   bool hakiO;
   bool hakiA;
   bool hakiR;
 
+protected:
+  FrutaDD fruta;
 public:
   Seres();
   Seres(string, int, string, bool, bool, bool);
@@ -28,7 +29,6 @@ public:
   bool getHakiA();
   bool getHakiR();
 
-  void setFruta(FrutaDD);
 
-  virtual ~Seres();
+  ~Seres();
 };

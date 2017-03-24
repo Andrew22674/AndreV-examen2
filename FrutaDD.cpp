@@ -1,3 +1,5 @@
+#include "FrutaDD.h"
+
 FrutaDD::FrutaDD(){
 
 }
