@@ -320,6 +320,7 @@ int main(){
         int opcionfruta;
         cin >> opcionfruta;
 
+        cout << "Ingrese nombre: " << endl;
         string nombre;
         cin.ignore();
         getline(cin, nombre);
@@ -329,7 +330,9 @@ int main(){
           cin.ignore();
           getline(cin, descripcion);
 
-          frutas.push_back(new Paramecia(nombre, descripcion));
+          FrutaDD* fruta = new Paramecia(nombre,descripcion);
+          frutas.push_back(fruta);
+          //cout << typeid(*frutas.back()).name() << endl;
         }else if(opcionfruta == 2){
           cout << "Ingrese tipo" << endl;
           cout << "1. Normal" << endl <<
@@ -353,13 +356,15 @@ int main(){
           string animal;
           cin >> animal;
 
-          frutas.push_back(new Zoan(nombre, tipo, animal));
+          FrutaDD* fruta = new Zoan(nombre, tipo, animal);
+          frutas.push_back(fruta);
         }else if(opcionfruta == 3){
           cout << "Ingrese elemento" << endl;
           string elemento;
           cin >> elemento;
 
-          frutas.push_back(new Logia(nombre, elemento));
+          FrutaDD* fruta = new Logia(nombre, elemento);
+          frutas.push_back(fruta);
         }
       }
   }
@@ -380,29 +385,37 @@ void crearLog(Seres* ser){
 
   }
 
-  strcpy(filename, "./log_seres/log.log");
-  //strcat(filename, fmt("%s.log", ser -> getNombre()).c_str());
+  strcpy(filename, "./log_seres/");
+  strcat(filename, fmt("%s.log", ser -> getNombre().c_str()).c_str());
 
   stringstream  ss;
 
   if(typeid(*ser).name() == typeid(Marina).name()){
-    ss << " Raza: " << ser -> getRaza() << "\n Edad: " << ser -> getEdad() << "\n Nombre: " << ser -> getNombre();
+    //cout << "Marina" << endl;
+    //ss << "Raza: " << raza;
+    ss << " Raza: " << ser -> getRaza() << "\n Edad: " << ser -> getEdad() << "\n Nombre: " << ser -> getNombre() << "\n Fecha de ingreso: " << ((Marina*)ser) -> getFecha() << "\n Rango: " << ((Marina*)ser) -> getRango();
 
     //if(ser -> getFruta() != NULL){
+      /*cout << typeid(ser -> getFruta()).name() << endl;
       if(typeid(ser -> getFruta()).name() == typeid(Paramecia).name()){
+        cout << "Paramecia" << endl;
         //Paramecia* p = new Paramecia(ser -> getFruta().getNombre(), )
-        //ss << "\n\tNombre de fruta: " << ser -> getFruta().getNombre() /*<< "\n\tDescripcion: " <<  p.getDescripcion()*/;
+        ss << "\n\tNombre de fruta: " << ser -> getFruta().getNombre() << "\n\tDescripcion: " <<  endl;
       }else if(typeid(ser -> getFruta()).name() == typeid(Zoan).name()){
 
       }else if(typeid(ser -> getFruta()).name() == typeid(Logia).name()){
 
-      }
+      }*/
   //  }
+
   }else if(typeid(*ser).name() == typeid(Pirata).name()){
-
+      ss << " Raza: " << ser -> getRaza() << "\n Edad: " << ser -> getEdad() << "\n Nombre: " << ser -> getNombre() << "\n Oceano: " <<  ((Pirata*)ser) -> getOceano();
   }else if(typeid(*ser).name() == typeid(Revolucionario).name()){
-
+      ss << " Raza: " << ser -> getRaza() << "\n Edad: " << ser -> getEdad() << "\n Nombre: " << ser -> getNombre() << "\n Fecha: " << ((Revolucionario*)ser) -> getFecha();
   }
+
+
+  ss << "\n Nombre de fruta: " << ser -> getFruta().getNombre();
 
   ss << "\n Haki de observacion: ";
   if(ser -> getHakiO() == true){
@@ -427,7 +440,7 @@ void crearLog(Seres* ser){
   //ss << "\t\tGameHub\n\nFecha: " << fecha << "\nHora: " << hora << "\nVendedor: " << venta -> getUsuario() << "\nCliente: " << venta -> getNombreCliente() <<"\n\nCantidad de Articulos: "<< venta -> getCantidadArticulos() << "\n\n";
 
 
-  outfile.open(filename, std::ios::app);
+  outfile.open(filename);
   outfile << ss.str();
   outfile.close();
 

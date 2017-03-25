@@ -15,3 +15,7 @@ string FrutaDD::getNombre(){
 FrutaDD::~FrutaDD(){
 
 }
+
+int FrutaDD::idk(){
+  
+}

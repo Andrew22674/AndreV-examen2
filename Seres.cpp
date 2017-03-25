@@ -41,6 +41,9 @@ bool Seres::getHakiR(){
   return hakiR;
 }
 
+int Seres::idk(){
+  
+}
 Seres::~Seres(){
 
 }

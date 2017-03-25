@@ -21,13 +21,15 @@ public:
   Seres();
   Seres(string, int, string, bool, bool, bool);
 
-  virtual string getRaza();
-  virtual int getEdad();
-  virtual string getNombre();
-  virtual FrutaDD getFruta();
-  virtual bool getHakiO();
-  virtual bool getHakiA();
-  virtual bool getHakiR();
+  string getRaza();
+  int getEdad();
+  string getNombre();
+  FrutaDD getFruta();
+  bool getHakiO();
+  bool getHakiA();
+  bool getHakiR();
+
+  virtual int idk();
 
 
   ~Seres();
