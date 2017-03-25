@@ -11,7 +11,7 @@ public:
   FrutaDD();
   FrutaDD(string);
 
-  string getNombre();
+  virtual string getNombre();
 
   virtual ~FrutaDD();
 };

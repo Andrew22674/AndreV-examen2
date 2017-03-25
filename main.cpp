@@ -73,7 +73,31 @@ int main(){
 
         cout << "Ingrese raza" << endl;
         string raza;
-        cin >> raza;
+
+        //gyojin, kyojin, ningyo, humano, mink o skypieans
+        cout << "1. Gyojin" << endl <<
+        "2. Kyojin" << endl <<
+        "3. Ningyo" << endl <<
+        "4. Humano" << endl <<
+        "5. Mink" << endl <<
+        "6. Skypieans" << endl;
+
+        int opcionraza;
+        cin >> opcionraza;
+
+        if(opcionraza == 1){
+          raza = "Gyojin";
+        }else if(opcionraza == 2){
+          raza = "Kyojin";
+        }else if(opcionraza == 3){
+          raza = "Ningyo";
+        }else if(opcionraza == 4){
+          raza = "Humano";
+        }else if(opcionraza == 5){
+          raza = "Mink";
+        }else if(opcionraza == 6){
+          raza = "Skypieans";
+        }
 
         cout << "Ingrese edad" << endl;
         int edad;
@@ -123,7 +147,29 @@ int main(){
           getline(cin, fecha);
 
           cout << "Ingrese rango" << endl;
-          cin >> rango;
+
+          //cadete, teniente, vice-almirante, almirante y almirante de flota
+
+          cout << "1. Cadete" << endl <<
+          "2. Teniente" << endl <<
+          "3. Vice-almirante" << endl <<
+          "4. Almirante" << endl <<
+          "5. Almirante de flota" << endl;
+
+          int opcionrango;
+          cin >> opcionrango;
+
+          if(opcionrango == 1){
+            rango = "Cadete";
+          }else if(opcionrango == 2){
+            rango = "Teniente";
+          }else if(opcionrango == 3){
+            rango = "Vice-almirante";
+          }else if(opcionrango == 4){
+            rango = "Almirante";
+          }else if(opcionrango == 5){
+            rango = "Almirante de flota";
+          }
 
 
           Seres* ser = new Marina(raza, edad, nombre, haki_o, haki_a, haki_r, fecha, rango);
@@ -138,10 +184,15 @@ int main(){
               cin >> index;
             }
 
-            ((Marina*)ser) -> setFruta(*frutas[index]);
+            ((Revolucionario*)ser) -> setFruta(*frutas[index]);
+            frutas.erase(frutas.begin() + index);
+          }else if(fdd == "n" || fdd == "N"){
+
           }else{
             cout << "No se puede agregar frutas porque aun no ha agregado una" << endl;
           }
+
+          seres.push_back(ser);
         }else if(opcionser == 2){//agregar pirata
           cout << "Tiene fruta del diablo?[s/n]" << endl;
           string fdd;//fruta del diablo
@@ -159,7 +210,34 @@ int main(){
 
           cout << "Ingrese oceano" << endl;
           string oceano;
-          cin >> oceano;
+
+          int opcionoceano;
+          //east,   west,   south,   north , blue, grand line y new world
+          cout << "1. East" << endl <<
+          "2. West" << endl <<
+          "3. South" << endl <<
+          "4. North" << endl <<
+          "5. Blue" << endl <<
+          "6. Grand Line" << endl <<
+          "7. New World" << endl;
+
+          cin >> opcionoceano;
+
+          if(opcionoceano == 1){
+            oceano = "East";
+          }else if(opcionoceano == 2){
+            oceano = "West";
+          }else if(opcionoceano == 3){
+            oceano = "South";
+          }else if(opcionoceano == 4){
+            oceano = "North";
+          }else if(opcionoceano == 5){
+            oceano = "Blue";
+          }else if(opcionoceano == 6){
+            oceano = "Grand Line";
+          }else if(opcionoceano == 7){
+            oceano = "New World";
+          }
 
           cout << "Ingrese tripulacion a la que pertenece" << endl;
           string tripulacion;
@@ -181,10 +259,15 @@ int main(){
               cin >> index;
             }
 
-            ((Pirata*)ser) -> setFruta(*frutas[index]);
+            ((Revolucionario*)ser) -> setFruta(*frutas[index]);
+            frutas.erase(frutas.begin() + index);
+          }else if(fdd == "n" || fdd == "N"){
+
           }else{
             cout << "No se puede agregar frutas porque aun no ha agregado una" << endl;
           }
+
+          seres.push_back(ser);
 
         }else if(opcionser == 3){//agregar revo
           cout << "Tiene fruta del diablo?[s/n]" << endl;
@@ -218,13 +301,66 @@ int main(){
             }
 
             ((Revolucionario*)ser) -> setFruta(*frutas[index]);
+            frutas.erase(frutas.begin() + index);
+          }else if(fdd == "n" || fdd == "N"){
+
           }else{
             cout << "No se puede agregar frutas porque aun no ha agregado una" << endl;
           }
+
+          seres.push_back(ser);
         }
+        crearLog(seres.back());
 
       }else if(seguir == 2){//agregar fruta
+        cout << "1. Paramecia" << endl <<
+        "2. Zoan" << endl <<
+        "3. Logia" << endl;
 
+        int opcionfruta;
+        cin >> opcionfruta;
+
+        string nombre;
+        cin.ignore();
+        getline(cin, nombre);
+        if(opcionfruta == 1){
+          cout << "Ingrese descripcion: " << endl;
+          string descripcion;
+          cin.ignore();
+          getline(cin, descripcion);
+
+          frutas.push_back(new Paramecia(nombre, descripcion));
+        }else if(opcionfruta == 2){
+          cout << "Ingrese tipo" << endl;
+          cout << "1. Normal" << endl <<
+          "2. Prehistorica" << endl <<
+          "3. Legendaria" << endl;
+
+          int opciontipo;
+          cin >> opciontipo;
+
+          string tipo;
+
+          if(opciontipo == 1){
+            tipo = "Normal";
+          }else if(opciontipo == 2){
+            tipo = "Prehistorica";
+          }else if(opciontipo == 3){
+            tipo = "Legendaria";
+          }
+
+          cout << "Ingrese animal" << endl;
+          string animal;
+          cin >> animal;
+
+          frutas.push_back(new Zoan(nombre, tipo, animal));
+        }else if(opcionfruta == 3){
+          cout << "Ingrese elemento" << endl;
+          string elemento;
+          cin >> elemento;
+
+          frutas.push_back(new Logia(nombre, elemento));
+        }
       }
   }
 
@@ -244,14 +380,53 @@ void crearLog(Seres* ser){
 
   }
 
-  strcpy(filename, "./log_seres/");
-  strcat(filename, fmt("%s.log", ser -> getNombre()).c_str());
+  strcpy(filename, "./log_seres/log.log");
+  //strcat(filename, fmt("%s.log", ser -> getNombre()).c_str());
 
   stringstream  ss;
-  /*ss << "\t\tGameHub\n\nFecha: " << fecha << "\nHora: " << hora << "\nVendedor: " << venta -> getUsuario() << "\nCliente: " << venta -> getNombreCliente() <<"\n\nCantidad de Articulos: "<< venta -> getCantidadArticulos() << "\n\n";
+
+  if(typeid(*ser).name() == typeid(Marina).name()){
+    ss << " Raza: " << ser -> getRaza() << "\n Edad: " << ser -> getEdad() << "\n Nombre: " << ser -> getNombre();
+
+    //if(ser -> getFruta() != NULL){
+      if(typeid(ser -> getFruta()).name() == typeid(Paramecia).name()){
+        //Paramecia* p = new Paramecia(ser -> getFruta().getNombre(), )
+        //ss << "\n\tNombre de fruta: " << ser -> getFruta().getNombre() /*<< "\n\tDescripcion: " <<  p.getDescripcion()*/;
+      }else if(typeid(ser -> getFruta()).name() == typeid(Zoan).name()){
+
+      }else if(typeid(ser -> getFruta()).name() == typeid(Logia).name()){
+
+      }
+  //  }
+  }else if(typeid(*ser).name() == typeid(Pirata).name()){
+
+  }else if(typeid(*ser).name() == typeid(Revolucionario).name()){
+
+  }
+
+  ss << "\n Haki de observacion: ";
+  if(ser -> getHakiO() == true){
+    ss << "Si tiene";
+  }else{
+    ss << "No tiene";
+  }
+
+  ss << "\n Haki de armadura: ";
+  if(ser -> getHakiA() == true){
+    ss << "Si tiene";
+  }else{
+    ss << "No tiene";
+  }
+
+  ss << "\n Haki del rey: ";
+  if(ser -> getHakiR() == true){
+    ss << "Si tiene";
+  }else{
+    ss << "No tiene";
+  }
+  //ss << "\t\tGameHub\n\nFecha: " << fecha << "\nHora: " << hora << "\nVendedor: " << venta -> getUsuario() << "\nCliente: " << venta -> getNombreCliente() <<"\n\nCantidad de Articulos: "<< venta -> getCantidadArticulos() << "\n\n";
 
 
-  ss << "\nSubTotal: "<< venta -> getSubtotal() << "\nImpuesto: " << impuesto << "\nTotal: "<< total;*/
   outfile.open(filename, std::ios::app);
   outfile << ss.str();
   outfile.close();
